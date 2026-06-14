@@ -1,0 +1,1856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lunara Home Cleaning | Wesley Chapel, FL</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F7F4EF;
+    --dark: #1C1C1A;
+    --gold: #B8A06A;
+    --gold-light: #D4BC8A;
+    --muted: #6B6760;
+    --border: rgba(184,160,106,0.25);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream);
+    color: var(--dark);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.5rem 3rem;
+    background: rgba(247,244,239,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: var(--dark);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .lang-toggle {
+    display: flex; gap: 0; border: 1px solid var(--border); border-radius: 2px; overflow: hidden;
+  }
+  .lang-btn {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-family: 'Jost', sans-serif;
+    transition: all 0.2s;
+  }
+  .lang-btn.active { background: var(--gold); color: white; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 6rem 4rem 6rem 5rem;
+    position: relative;
+  }
+  .hero-left::after {
+    content: '';
+    position: absolute; top: 15%; right: -1px; bottom: 15%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  }
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5vw, 5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--dark);
+    margin-bottom: 1.5rem;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--muted);
+    max-width: 380px;
+    margin-bottom: 3rem;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn-primary {
+    padding: 1rem 2.5rem;
+    background: var(--dark);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold); }
+  .btn-outline {
+    padding: 1rem 2.5rem;
+    background: transparent;
+    color: var(--dark);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-right {
+    background: var(--dark);
+    position: relative;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-image-placeholder {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 1rem;
+    opacity: 0.3;
+  }
+  .hero-image-placeholder .line {
+    width: 60px; height: 1px;
+    background: var(--gold-light);
+  }
+  .hero-image-placeholder p {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+  .hero-badge {
+    position: absolute; bottom: 2.5rem; right: 2.5rem;
+    border: 1px solid rgba(184,160,106,0.4);
+    padding: 1rem 1.5rem;
+    text-align: center;
+  }
+  .hero-badge .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--gold-light);
+    display: block;
+  }
+  .hero-badge .label {
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(212,188,138,0.7);
+  }
+
+  /* AREAS */
+  .areas-strip {
+    background: var(--dark);
+    padding: 1.2rem 0;
+    overflow: hidden;
+  }
+  .areas-inner {
+    display: flex; gap: 3rem;
+    white-space: nowrap;
+    animation: marquee 20s linear infinite;
+  }
+  .area-item {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .area-dot { color: rgba(184,160,106,0.4); }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ABOUT */
+  .section { padding: 7rem 5rem; }
+  .section-alt { background: white; }
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--dark);
+    margin-bottom: 1.5rem;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .section-body {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: var(--muted);
+    max-width: 560px;
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .stat {
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--dark);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 4rem;
+  }
+  .service-card {
+    background: var(--cream);
+    padding: 3rem 2.5rem;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .section-alt .service-card { background: white; }
+  .service-card:hover {
+    background: var(--dark);
+  }
+  .service-card:hover .service-title,
+  .service-card:hover .service-desc,
+  .service-card:hover .service-price { color: var(--cream); }
+  .service-card:hover .service-num { color: var(--gold); }
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+  .service-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--dark);
+    margin-bottom: 1rem;
+    transition: color 0.3s;
+  }
+  .service-desc {
+    font-size: 0.88rem;
+    line-height: 1.8;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    transition: color 0.3s;
+  }
+  .service-price {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    transition: color 0.3s;
+  }
+
+  /* PACKAGES */
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+  .pkg-card {
+    border: 1px solid var(--border);
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: all 0.3s;
+  }
+  .pkg-card.featured {
+    background: var(--dark);
+    border-color: var(--gold);
+  }
+  .pkg-card.featured .pkg-name,
+  .pkg-card.featured .pkg-price,
+  .pkg-card.featured .pkg-visits,
+  .pkg-card.featured .pkg-feature { color: var(--cream); }
+  .pkg-card.featured .pkg-per { color: var(--gold-light); }
+  .pkg-featured-badge {
+    position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+    background: var(--gold);
+    color: white;
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 0.3rem 1rem;
+  }
+  .pkg-name {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+  .pkg-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--dark);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .pkg-per {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+  .pkg-visits {
+    font-size: 0.88rem;
+    color: var(--dark);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .pkg-features { list-style: none; margin-bottom: 2rem; }
+  .pkg-feature {
+    font-size: 0.85rem;
+    color: var(--muted);
+    padding: 0.4rem 0;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .pkg-feature::before {
+    content: '—';
+    color: var(--gold);
+    font-size: 0.7rem;
+  }
+  body.lang-es .pkg-feature.es { display: flex; }
+  .pkg-btn.es { width: 100%; }
+  body.lang-es .pkg-btn.es { display: block; }
+  .pkg-btn {
+    width: 100%;
+    padding: 0.9rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--dark);
+    transition: all 0.2s;
+  }
+  .pkg-card.featured .pkg-btn {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: white;
+  }
+  .pkg-btn:hover { background: var(--gold); border-color: var(--gold); color: white; }
+
+  /* PROCESS */
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+    margin-top: 4rem;
+  }
+  .process-step { position: relative; }
+  .process-step::after {
+    content: '';
+    position: absolute; top: 1.2rem; left: calc(100% + 0.5rem);
+    width: calc(100% - 2rem);
+    height: 1px;
+    background: linear-gradient(to right, var(--gold), transparent);
+  }
+  .process-step:last-child::after { display: none; }
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--gold);
+    opacity: 0.4;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--dark);
+    margin-bottom: 0.75rem;
+  }
+  .step-desc {
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: var(--muted);
+  }
+
+  /* CONTACT FORM */
+  .contact-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 70vh;
+  }
+  .contact-left {
+    background: var(--dark);
+    padding: 6rem 4rem;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .contact-left .section-label { color: var(--gold); }
+  .contact-left .section-title { color: var(--cream); }
+  .contact-left .section-body { color: rgba(247,244,239,0.6); }
+  .contact-details { margin-top: 3rem; display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact-detail { display: flex; gap: 1rem; align-items: flex-start; }
+  .contact-detail-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    min-width: 80px;
+    padding-top: 0.1rem;
+  }
+  .contact-detail-val {
+    font-size: 0.9rem;
+    color: rgba(247,244,239,0.7);
+    line-height: 1.6;
+  }
+  .contact-right {
+    background: white;
+    padding: 6rem 4rem;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .contact-section.contact-form-only {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .contact-section.contact-form-only .contact-right {
+    max-width: 640px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .info-section {
+    background: var(--dark);
+    padding: 6rem 4rem;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center;
+  }
+  .info-section .section-label { color: var(--gold); }
+  .info-section .section-title { color: var(--cream); }
+  .info-section .section-body { color: rgba(247,244,239,0.6); max-width: 560px; }
+  .info-details {
+    margin-top: 3rem;
+    display: flex; flex-direction: row; justify-content: center;
+    gap: 3rem; flex-wrap: wrap;
+  }
+  .info-detail { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; max-width: 220px; }
+  .form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--dark);
+    margin-bottom: 2.5rem;
+  }
+  .form-group { margin-bottom: 1.5rem; }
+  .form-label {
+    display: block;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+  .form-input, .form-select, .form-textarea {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--border);
+    background: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--dark);
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--gold);
+  }
+  .form-textarea { resize: vertical; min-height: 100px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-submit {
+    width: 100%;
+    padding: 1.1rem;
+    background: var(--dark);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: var(--gold); }
+  .form-note {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 1rem;
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    padding: 3rem 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(184,160,106,0.15);
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    color: var(--cream);
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-copy {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: rgba(247,244,239,0.35);
+  }
+  .footer-areas {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: rgba(184,160,106,0.6);
+    text-align: right;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow { animation: fadeUp 0.6s ease both; }
+  .hero-title { animation: fadeUp 0.6s ease 0.1s both; }
+  .hero-subtitle { animation: fadeUp 0.6s ease 0.2s both; }
+  .hero-cta { animation: fadeUp 0.6s ease 0.3s both; }
+
+  /* LANG */
+  .es { display: none; }
+  body.lang-es .en { display: none; }
+  body.lang-es .es { display: block; }
+  body.lang-es .es-inline { display: inline; }
+  body.lang-es .en-inline { display: none; }
+  .es-inline { display: none; }
+
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { min-height: 300px; }
+    .hero-left { padding: 4rem 2rem; }
+    .section { padding: 5rem 2rem; }
+    .about-grid, .contact-section { grid-template-columns: 1fr; }
+    .services-grid, .packages-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .process-step::after { display: none; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+    .contact-left, .contact-right { padding: 4rem 2rem; }
+    .info-section { padding: 4rem 2rem; }
+    .info-details { flex-direction: column; gap: 2rem; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+.nav-logo-img { text-decoration: none; display: flex; flex-direction: column; align-items: flex-start; line-height: 1; gap: 2px; }
+.logo-lunara { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400; letter-spacing: 0.18em; color: var(--gold); }
+.logo-tagline { font-family: 'Jost', sans-serif; font-size: 0.55rem; letter-spacing: 0.28em; color: var(--muted); font-weight: 400; }
+
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-top: 2.5rem; margin-bottom: 1.5rem; }
+  .gal-item { aspect-ratio: 1; overflow: hidden; position: relative; cursor: pointer; }
+  .gal-item:first-child { grid-column: span 2; aspect-ratio: 2/1; }
+  .gal-img-wrap { width: 100%; height: 100%; position: relative; overflow: hidden; }
+  .gal-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block; }
+  .gal-item:hover .gal-img-wrap img { transform: scale(1.04); }
+  .gal-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(28,28,26,0.7) 0%, transparent 50%); opacity: 0; transition: opacity 0.3s; display: flex; align-items: flex-end; padding: 1.25rem; }
+  .gal-item:hover .gal-overlay { opacity: 1; }
+  .gal-overlay span { font-size: .78rem; letter-spacing: .1em; color: rgba(247,244,239,.9); line-height: 1.4; }
+  .gal-coming-soon { text-align: center; padding: 2rem; border: 1px solid var(--border); background: var(--cream); }
+  @media(max-width:900px) { .gallery-grid { grid-template-columns: repeat(2,1fr); } .gal-item:first-child { grid-column: span 2; } }
+  @media(max-width:500px) { .gallery-grid { grid-template-columns: 1fr; } .gal-item:first-child { grid-column: span 1; aspect-ratio: 1; } }
+
+  .price-section { background: var(--dark); padding: 5rem; }
+  .price-table-wrap { overflow-x: auto; margin-top: 2.5rem; }
+  .price-table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+  .price-table th { font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); padding: .75rem 1rem; text-align: center; border-bottom: 1px solid rgba(184,160,106,.2); }
+  .price-table th:first-child { text-align: left; }
+  .price-table td { padding: .9rem 1rem; text-align: center; color: rgba(247,244,239,.7); border-bottom: 1px solid rgba(255,255,255,.05); font-size: .88rem; }
+  .price-table td:first-child { text-align: left; font-weight: 400; color: var(--cream); }
+  .price-table tr:hover td { background: rgba(184,160,106,.05); }
+  .price-table .highlight { color: var(--gold-light); font-weight: 500; }
+  .price-note { font-size: .78rem; color: rgba(247,244,239,.4); text-align: center; margin-top: 1.5rem; line-height: 1.7; font-style: italic; }
+  .price-cta { text-align: center; margin-top: 2.5rem; }
+  @media(max-width:900px){ .price-section { padding: 3rem 1.5rem; } .price-table { font-size: .78rem; } .price-table td, .price-table th { padding: .6rem .5rem; } }
+
+  .calc-section { padding: 5rem; background: var(--cream); }
+  .calc-wrap { display: grid; grid-template-columns: 1fr 340px; gap: 3rem; margin-top: 2.5rem; align-items: start; }
+  .calc-areas { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .calc-area { background: white; border: 1px solid var(--border); padding: .9rem 1rem; display: flex; align-items: center; justify-content: space-between; }
+  .calc-area-left .area-name { font-size: .88rem; color: var(--dark); font-weight: 400; }
+  .calc-area-left .area-price { font-size: .72rem; color: var(--gold); margin-top: 2px; }
+  .calc-controls { display: flex; align-items: center; gap: .6rem; flex-shrink: 0; }
+  .calc-btn { width: 26px; height: 26px; border: 1px solid var(--border); background: transparent; cursor: pointer; font-size: 1rem; color: var(--dark); display: flex; align-items: center; justify-content: center; font-family: var(--font-sans, sans-serif); transition: all .2s; }
+  .calc-btn:hover { background: var(--dark); color: white; }
+  .calc-count { font-size: .95rem; min-width: 16px; text-align: center; }
+  .calc-svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 1.5rem; }
+  .calc-svc { border: 1px solid var(--border); padding: .75rem .8rem; cursor: pointer; text-align: left; background: white; transition: all .2s; }
+  .calc-svc:hover { border-color: var(--gold-light); }
+  .calc-svc.active { border-color: var(--gold); background: rgba(184,160,106,.06); }
+  .calc-svc-name { font-size: .8rem; font-weight: 400; color: var(--dark); }
+  .calc-svc-price { font-size: .7rem; color: var(--gold); margin-top: 2px; }
+  .calc-result { background: var(--dark); padding: 2rem; position: sticky; top: 90px; }
+  .calc-result-label { font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: .5rem; }
+  .calc-total { font-family: Georgia, serif; font-size: 3rem; font-weight: 300; color: white; line-height: 1; margin-bottom: .3rem; }
+  .calc-svc-name-display { font-size: .78rem; color: rgba(247,244,239,.5); margin-bottom: 1.5rem; }
+  .calc-lines { border-top: 1px solid rgba(184,160,106,.2); padding-top: 1rem; margin-bottom: 1.5rem; }
+  .calc-line { display: flex; justify-content: space-between; font-size: .78rem; padding: .35rem 0; color: rgba(247,244,239,.6); }
+  .calc-line-val { color: white; }
+  .calc-note { font-size: .7rem; color: rgba(247,244,239,.35); line-height: 1.6; margin-bottom: 1.5rem; }
+  .calc-book-btn { width: 100%; padding: 1rem; background: var(--gold); color: white; border: none; cursor: pointer; font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; font-family: inherit; transition: background .2s; }
+  .calc-book-btn:hover { background: var(--gold-light); }
+  .calc-addon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 1rem; }
+  .calc-addon { border: 1px solid var(--border); padding: .75rem .8rem; cursor: pointer; background: white; display: flex; gap: .6rem; align-items: flex-start; transition: all .2s; }
+  .calc-addon:hover { border-color: var(--gold-light); }
+  .calc-addon.active { border-color: var(--gold); background: rgba(184,160,106,.06); }
+  .calc-addon-check { width: 13px; height: 13px; border: 1px solid var(--border); flex-shrink: 0; margin-top: 2px; display: flex; align-items: center; justify-content: center; font-size: 8px; }
+  .calc-addon.active .calc-addon-check { background: var(--gold); border-color: var(--gold); color: white; }
+  .calc-block-label { font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin: 1.5rem 0 .75rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); }
+  @media(max-width:900px){ .calc-section{padding:3rem 1.5rem;} .calc-wrap{grid-template-columns:1fr;} .calc-result{position:relative;top:0;} .calc-svc-grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:500px){ .calc-areas{grid-template-columns:1fr;} .calc-addon-grid{grid-template-columns:1fr;} }
+
+
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 0; background: transparent; border: none; cursor: pointer; font-family: inherit; font-size: .95rem; color: var(--dark); text-align: left; gap: 1rem; }
+  .faq-q:hover { color: var(--gold); }
+  .faq-arrow { font-size: 1.2rem; color: var(--gold); flex-shrink: 0; transition: transform .2s; font-weight: 300; }
+  .faq-q.open .faq-arrow { transform: rotate(45deg); }
+  .faq-a { font-size: .88rem; color: var(--muted); line-height: 1.8; padding-bottom: 1.1rem; display: none; }
+  .faq-a.open.en { display: block; }
+  .faq-a.open.es { display: none; }
+  body.lang-es .faq-a.open.en { display: none; }
+  body.lang-es .faq-a.open.es { display: block; }
+
+  /* FLOATING TEXT US BUTTON */
+  .text-us-btn {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 999;
+    background: var(--gold);
+    color: white;
+    border: none;
+    border-radius: 999px;
+    padding: 0.85rem 1.4rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 16px rgba(28,28,26,0.25);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .text-us-btn:hover { background: var(--dark); transform: translateY(-2px); }
+  .text-us-btn .icon { font-size: 1.1rem; }
+  @media (max-width: 600px) {
+    .text-us-btn { bottom: 1rem; right: 1rem; padding: 0.75rem 1.1rem; font-size: 0.72rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo-img">
+  <span class="logo-lunara">LUNARA</span>
+  <span class="logo-tagline">THOUGHTFULLY DONE</span>
+</a>
+  <ul class="nav-links">
+    <li><a href="#services" class="en-inline">Services</a><a href="#services" class="es-inline">Servicios</a></li>
+    <li><a href="#packages" class="en-inline">Packages</a><a href="#packages" class="es-inline">Paquetes</a></li>
+    <li><a href="#pricing" class="en-inline" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'});return false;">Book Now</a><a href="#contact" class="es-inline">Reservar</a></li>
+  </ul>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('es')">ES</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow en">Wesley Chapel · Land O' Lakes · Zephyrhills · Tampa</p>
+    <p class="hero-eyebrow es">Wesley Chapel · Land O' Lakes · Zephyrhills · Tampa</p>
+
+    <h1 class="hero-title en">Your home,<br><em>thoughtfully</em><br>cleaned.</h1>
+    <h1 class="hero-title es">Tu hogar,<br><em>limpiado con</em><br>cuidado.</h1>
+
+    <p class="hero-subtitle en">Premium residential cleaning starting from $129/week. See your exact price below — no surprises, no wasted time.</p>
+    <p class="hero-subtitle es">Limpieza residencial premium desde $129/semana. Ve tu precio exacto abajo — sin sorpresas, sin perder tiempo.</p>
+
+    <div class="hero-cta">
+      <a href="#pricing" class="btn-primary en" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'});return false;">Get My Price →</a>
+      <a href="#contact" class="btn-primary es">Solicitar Cotización</a>
+      <a href="#packages" class="btn-outline en" onclick="document.getElementById('packages').scrollIntoView({behavior:'smooth'});return false;">View Packages</a>
+      <a href="#packages" class="btn-outline es">Ver Paquetes</a>
+    </div>
+  </div>
+  <div class="hero-right" style="position:relative;overflow:hidden;">
+    <img src="img1.jpg" alt="Lunara Home Cleaning — Thoughtfully Done" style="width:100%;height:100%;object-fit:cover;object-position:center center;">
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 60%,rgba(28,28,26,0.4));"></div>
+    <div class="hero-badge">
+      <span class="num">3+</span>
+      <span class="label en">Years of Excellence</span>
+      <span class="label es">Años de Experiencia</span>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS MARQUEE -->
+<div class="areas-strip">
+  <div class="areas-inner">
+    <span class="area-item">Wesley Chapel</span><span class="area-dot">·</span>
+    <span class="area-item">Land O' Lakes</span><span class="area-dot">·</span>
+    <span class="area-item">Zephyrhills</span><span class="area-dot">·</span>
+    <span class="area-item">Tampa</span><span class="area-dot">·</span>
+    <span class="area-item">Residential Cleaning</span><span class="area-dot">·</span>
+    <span class="area-item">Deep Cleaning</span><span class="area-dot">·</span>
+    <span class="area-item">Airbnb Turnover</span><span class="area-dot">·</span>
+    <span class="area-item">Prepaid Packages</span><span class="area-dot">·</span>
+    <span class="area-item">Wesley Chapel</span><span class="area-dot">·</span>
+    <span class="area-item">Land O' Lakes</span><span class="area-dot">·</span>
+    <span class="area-item">Zephyrhills</span><span class="area-dot">·</span>
+    <span class="area-item">Tampa</span><span class="area-dot">·</span>
+    <span class="area-item">Residential Cleaning</span><span class="area-dot">·</span>
+    <span class="area-item">Deep Cleaning</span><span class="area-dot">·</span>
+    <span class="area-item">Airbnb Turnover</span><span class="area-dot">·</span>
+    <span class="area-item">Prepaid Packages</span><span class="area-dot">·</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="about-grid">
+    <div>
+      <p class="section-label en">About Lunara</p>
+      <p class="section-label es">Sobre Lunara</p>
+      <h2 class="section-title en">Cleaning that respects<br>your <em>home & time</em></h2>
+      <h2 class="section-title es">Limpieza que respeta<br>tu <em>hogar y tiempo</em></h2>
+      <p class="section-body en">Lunara Home Cleaning was built for homeowners who value quality over quantity. We don't cut corners, rush through rooms, or bring a team of strangers into your space. You get consistency, trust, and a home that truly shines.</p>
+      <p class="section-body es">Lunara Home Cleaning fue creado para hogares que valoran la calidad. No cortamos esquinas, no corremos, ni traemos desconocidos a tu espacio. Recibes consistencia, confianza, y un hogar que verdaderamente brilla.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat">
+        <div class="stat-num">10+</div>
+        <div class="stat-label en">Recurring clients</div>
+        <div class="stat-label es">Clientes recurrentes</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3</div>
+        <div class="stat-label en">Years serving Tampa Bay</div>
+        <div class="stat-label es">Años en Tampa Bay</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label en">Prepaid — no surprises</div>
+        <div class="stat-label es">Prepagado — sin sorpresas</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5★</div>
+        <div class="stat-label en">Google rating</div>
+        <div class="stat-label es">Calificación en Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section section-alt" id="services">
+  <p class="section-label en">What We Offer</p>
+  <p class="section-label es">Nuestros Servicios</p>
+  <h2 class="section-title en">Tailored to your <em>home</em></h2>
+  <h2 class="section-title es">A la medida de tu <em>hogar</em></h2>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-num">01</span>
+      <h3 class="service-title en">Standard Clean</h3>
+      <h3 class="service-title es">Limpieza Estándar</h3>
+      <p class="service-desc en">Our core maintenance service to keep your home consistently clean and fresh.</p>
+      <p class="service-desc es">Nuestro servicio de mantenimiento para mantener tu hogar limpio y fresco.</p>
+      <ul style="font-size:.78rem;color:var(--muted);line-height:2;list-style:none;margin-bottom:1rem">
+        <li class="en">✓ Vacuum & mop all floors</li>
+        <li class="es">✓ Aspirar y trapear todos los pisos</li>
+        <li class="en">✓ Counters, mirrors & surfaces</li>
+        <li class="es">✓ Mostradores, espejos y superficies</li>
+        <li class="en">✓ Full bathroom cleaning</li>
+        <li class="es">✓ Limpieza completa del baño</li>
+        <li class="en">✓ Kitchen — stove top, counter, sink</li>
+        <li class="es">✓ Cocina — estufa, mostrador, fregadero</li>
+        <li class="en">✓ Interior microwave</li>
+        <li class="es">✓ Interior del microondas</li>
+        <li class="en">✓ Dusting furniture & accessible surfaces</li>
+        <li class="es">✓ Sacudir muebles y superficies accesibles</li>
+        <li class="en">✓ Exterior cabinets (no heavy grease buildup)</li>
+        <li class="es">✓ Gabinetes exteriores (sin acumulación pesada de grasa)</li>
+        <li class="en" style="color:#B8A06A">+ Add-ons available upon request</li>
+        <li class="es" style="color:#B8A06A">+ Servicios adicionales disponibles a solicitud</li>
+      </ul>
+      <span class="service-price en">From $166 · Recurring bi-weekly</span>
+      <span class="service-price es">Desde $166 · Quincenal recurrente</span>
+    </div>
+
+    <div class="service-card">
+      <span class="service-num">02</span>
+      <h3 class="service-title en">Deep Clean</h3>
+      <h3 class="service-title es">Limpieza Profunda</h3>
+      <p class="service-desc en">A more detailed clean — perfect as your first service or after a long period without professional cleaning.</p>
+      <p class="service-desc es">Una limpieza más detallada — ideal como primer servicio o después de un largo período.</p>
+      <ul style="font-size:.78rem;color:var(--muted);line-height:2;list-style:none;margin-bottom:1rem">
+        <li class="en">✓ Everything in Standard Clean</li>
+        <li class="es">✓ Todo lo incluido en la Limpieza Estándar</li>
+        <li class="en">✓ Baseboard dusting</li>
+        <li class="es">✓ Limpieza de rodapiés</li>
+        <li class="en">✓ Detailed tile & grout in bathrooms</li>
+        <li class="es">✓ Detalle de azulejos y lechada en baños</li>
+        <li class="en">✓ Door frames & light switches</li>
+        <li class="es">✓ Marcos de puertas e interruptores de luz</li>
+        <li class="en">✓ Trash removal</li>
+        <li class="es">✓ Disposición de basura</li>
+        <li class="en">✗ Does not include appliance interiors</li>
+        <li class="es">✗ No incluye interiores de electrodomésticos</li>
+        <li class="en">✗ Does not include windows, fans or blinds</li>
+        <li class="es">✗ No incluye ventanas, ventiladores o persianas</li>
+        <li class="en" style="color:#B8A06A">Available upon request · Custom quote</li>
+        <li class="es" style="color:#B8A06A">Disponible a solicitud · Cotización personalizada</li>
+      </ul>
+      <span class="service-price en">Custom quote · Contact us</span>
+      <span class="service-price es">Cotización personalizada · Contáctanos</span>
+    </div>
+
+    <div class="service-card">
+      <span class="service-num">03</span>
+      <h3 class="service-title en">Recurring Plans</h3>
+      <h3 class="service-title es">Planes Recurrentes</h3>
+      <p class="service-desc en">Weekly, bi-weekly, or monthly — choose the frequency that works best for your lifestyle and save with a prepaid package.</p>
+      <p class="service-desc es">Semanal, quincenal o mensual — elige la frecuencia que mejor se adapte a tu estilo de vida.</p>
+      <ul style="font-size:.78rem;color:var(--muted);line-height:2;list-style:none;margin-bottom:1rem">
+        <li class="en">✓ Same service, every time</li>
+        <li class="es">✓ El mismo servicio, cada vez</li>
+        <li class="en">✓ Weekly · Bi-weekly · Monthly</li>
+        <li class="es">✓ Semanal · Quincenal · Mensual</li>
+        <li class="en">✓ Save up to 15% with prepaid packages</li>
+        <li class="es">✓ Ahorra hasta 15% con paquetes prepagados</li>
+        <li class="en">✓ Initial standard clean required first</li>
+        <li class="es">✓ Se requiere una limpieza estándar inicial primero</li>
+        <li class="en" style="color:#B8A06A">Use the calculator below for your exact price</li>
+        <li class="es" style="color:#B8A06A">Usa la calculadora abajo para tu precio exacto</li>
+      </ul>
+      <span class="service-price en">From $129/week · Calculate your price below</span>
+      <span class="service-price es">Desde $129/semana · Calcula tu precio abajo</span>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="section" id="packages" style="background:var(--dark)">
+  <p class="section-label en" style="color:var(--gold)">Prepaid Packages</p>
+  <p class="section-label es" style="color:var(--gold)">Paquetes Prepagados</p>
+  <h2 class="section-title en" style="color:var(--cream)">Your cleaning, <em>secured</em></h2>
+  <h2 class="section-title es" style="color:var(--cream)">Tu limpieza, <em>asegurada</em></h2>
+  <p class="section-body en" style="color:rgba(247,244,239,.6)">Lock in your visits, lock in your savings — and never think about scheduling again. The more you commit, the more you save.</p>
+  <p class="section-body es" style="color:rgba(247,244,239,.6)">Asegura tus visitas, asegura tus ahorros — y nunca vuelvas a pensar en programar. Cuanto más te comprometas, más ahorras.</p>
+
+  <div class="packages-grid" style="margin-top:2.5rem">
+    <div class="pkg-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(184,160,106,0.3)">
+      <p class="pkg-name en" style="color:var(--gold-light)">Starter</p>
+      <p class="pkg-name es" style="color:var(--gold-light)">Inicial</p>
+      <div class="pkg-price" style="font-size:2.5rem;color:var(--cream);margin-bottom:.3rem">3</div>
+      <p class="pkg-per en" style="color:rgba(247,244,239,.5)">visits · Paid upfront</p>
+      <p class="pkg-per es" style="color:rgba(247,244,239,.5)">visitas · Pago por adelantado</p>
+      <p class="en" style="color:#7ec8a4;font-size:.9rem;font-weight:500;margin:1rem 0 1.5rem">Save 5% on every clean</p>
+      <p class="es" style="color:#7ec8a4;font-size:.9rem;font-weight:500;margin:1rem 0 1.5rem">Ahorra 5% en cada limpieza</p>
+      <ul class="pkg-features">
+        <li class="pkg-feature en" style="color:rgba(247,244,239,.7)">Try it, love it</li>
+        <li class="pkg-feature es" style="color:rgba(247,244,239,.7)">Pruébalo, ámalo</li>
+        <li class="pkg-feature en" style="color:rgba(247,244,239,.7)">Reserve your first 3 visits</li>
+        <li class="pkg-feature es" style="color:rgba(247,244,239,.7)">Reserva tus primeras 3 visitas</li>
+        <li class="pkg-feature en" style="color:rgba(247,244,239,.7)">Save from day one</li>
+        <li class="pkg-feature es" style="color:rgba(247,244,239,.7)">Ahorra desde el primer día</li>
+        <li class="pkg-feature en" style="color:rgba(247,244,239,.7)">Your spot is secured</li>
+        <li class="pkg-feature es" style="color:rgba(247,244,239,.7)">Tu lugar está asegurado</li>
+      </ul>
+      <button class="pkg-btn en" style="border-color:rgba(184,160,106,0.4);color:var(--cream)" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Calculate my savings →</button>
+      <button class="pkg-btn es" style="border-color:rgba(184,160,106,0.4);color:var(--cream)" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Calcula mis ahorros →</button>
+    </div>
+
+    <div class="pkg-card" style="background:var(--gold);border:2px solid var(--gold-light);position:relative">
+      <div class="pkg-featured-badge en" style="background:var(--dark);color:var(--gold)">Best Value</div>
+      <div class="pkg-featured-badge es" style="background:var(--dark);color:var(--gold)">Mejor Valor</div>
+      <p class="pkg-name en" style="color:var(--dark)">Regular</p>
+      <p class="pkg-name es" style="color:var(--dark)">Regular</p>
+      <div class="pkg-price" style="font-size:2.5rem;color:var(--dark);margin-bottom:.3rem">6</div>
+      <p class="pkg-per en" style="color:rgba(28,28,26,.7)">visits · Paid upfront</p>
+      <p class="pkg-per es" style="color:rgba(28,28,26,.7)">visitas · Pago por adelantado</p>
+      <p class="en" style="color:var(--dark);font-size:.9rem;font-weight:500;margin:1rem 0 1.5rem">Save 10% on every clean</p>
+      <p class="es" style="color:var(--dark);font-size:.9rem;font-weight:500;margin:1rem 0 1.5rem">Ahorra 10% en cada limpieza</p>
+      <ul class="pkg-features">
+        <li class="pkg-feature en" style="color:var(--dark)">Your home, always ready</li>
+        <li class="pkg-feature es" style="color:var(--dark)">Tu hogar, siempre listo</li>
+        <li class="pkg-feature en" style="color:var(--dark)">6 visits secured upfront</li>
+        <li class="pkg-feature es" style="color:var(--dark)">6 visitas aseguradas por adelantado</li>
+        <li class="pkg-feature en" style="color:var(--dark)">10% off every clean</li>
+        <li class="pkg-feature es" style="color:var(--dark)">10% de descuento en cada limpieza</li>
+        <li class="pkg-feature en" style="color:var(--dark)">Your spot is always yours</li>
+        <li class="pkg-feature es" style="color:var(--dark)">Tu lugar siempre es tuyo</li>
+      </ul>
+      <button class="pkg-btn en" style="background:var(--dark);border-color:var(--dark);color:var(--cream)" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Calculate my savings →</button>
+      <button class="pkg-btn es" style="background:var(--dark);border-color:var(--dark);color:var(--cream)" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Calcula mis ahorros →</button>
+    </div>
+
+    <div class="pkg-card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(184,160,106,0.3)">
+      <p class="pkg-name en" style="color:var(--gold-light)">Premium</p>
+      <p class="pkg-name es" style="color:var(--gold-light)">Premium</p>
+      <div class="pkg-price" style="font-size:2.5rem;color:var(--cream);margin-bottom:.3rem">12</div>
+      <p class="pkg-per en" style="color:rgba(247,244,239,.5)">visits · Paid upfront</p>
+      <p class="pkg-per es" style="color:rgba(247,244,239,.5)">visitas · Pago por adelantado</p>
+      <p class="en" style="color:#7ec8a4;font-size:.9rem;font-weight:500;margin:1rem 0 1.5rem">Save 15% on every clean</p>
+      <p class="es" style="color:#7ec8a4;font-size:.9rem;font-weight:500;margin:1rem 0 1.5rem">Ahorra 15% en cada limpieza</p>
+      <ul class="pkg-features">
+        <li class="pkg-feature en" style="color:rgba(247,244,239,.7)">Maximum savings</li>
+        <li class="pkg-feature es" style="color:rgba(247,244,239,.7)">Ahorro máximo</li>
+        <li class="pkg-feature en" style="color:rgba(247,244,239,.7)">12 visits — a full year of clean</li>
+        <li class="pkg-feature es" style="color:rgba(247,244,239,.7)">12 visitas — un año completo de limpieza</li>
+        <li class="pkg-feature en" style="color:rgba(247,244,239,.7)">Our biggest discount</li>
+        <li class="pkg-feature es" style="color:rgba(247,244,239,.7)">Nuestro mayor descuento</li>
+        <li class="pkg-feature en" style="color:rgba(247,244,239,.7)">Never think about scheduling</li>
+        <li class="pkg-feature es" style="color:rgba(247,244,239,.7)">Nunca pienses en programar</li>
+      </ul>
+      <button class="pkg-btn en" style="border-color:rgba(184,160,106,0.4);color:var(--cream)" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Calculate my savings →</button>
+      <button class="pkg-btn es" style="border-color:rgba(184,160,106,0.4);color:var(--cream)" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Calcula mis ahorros →</button>
+    </div>
+  </div>
+
+  <p class="en" style="text-align:center;font-size:.82rem;color:rgba(247,244,239,.35);margin-top:2rem;font-style:italic">
+    Package price is calculated based on your home's areas and frequency. Use the calculator below to see your exact savings.
+  </p>
+  <p class="es" style="text-align:center;font-size:.82rem;color:rgba(247,244,239,.35);margin-top:2rem;font-style:italic">
+    El precio del paquete se calcula según las áreas y la frecuencia de tu hogar. Usa la calculadora abajo para ver tus ahorros exactos.
+  </p>
+</section>
+
+<!-- PROCESS -->
+<section class="section section-alt">
+  <p class="section-label en">How It Works</p>
+  <p class="section-label es">Cómo Funciona</p>
+  <h2 class="section-title en">Simple, <em>seamless</em>, stress-free</h2>
+  <h2 class="section-title es">Simple, <em>fácil</em>, sin estrés</h2>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <h3 class="step-title en">Get Your Price</h3>
+      <h3 class="step-title es">Calcula tu Precio</h3>
+      <p class="step-desc en">Use the calculator above to see your exact price instantly.</p>
+      <p class="step-desc es">Usa la calculadora para ver tu precio exacto al instante.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <h3 class="step-title en">Tell Us About You</h3>
+      <h3 class="step-title es">Cuéntanos sobre Ti</h3>
+      <p class="step-desc en">Fill out the quick form with your contact info and home details.</p>
+      <p class="step-desc es">Llena el formulario rápido con tu información de contacto y los detalles de tu hogar.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <h3 class="step-title en">Pay to Confirm</h3>
+      <h3 class="step-title es">Paga para Confirmar</h3>
+      <p class="step-desc en">We'll send a secure payment link via Square. Your appointment is confirmed once payment is received.</p>
+      <p class="step-desc es">Te enviamos un enlace de pago seguro vía Square. Tu cita se confirma al recibir el pago.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <h3 class="step-title en">Enjoy a Spotless Home</h3>
+      <h3 class="step-title es">Disfruta Tu Hogar</h3>
+      <p class="step-desc en">We arrive on time, clean to our exacting standards, and leave your home immaculate.</p>
+      <p class="step-desc es">Llegamos a tiempo, limpiamos con nuestros estándares y dejamos tu hogar impecable.</p>
+    </div>
+  </div>
+</section>
+
+
+  
+  
+
+  
+  <!-- CALCULATOR -->
+  <section class="calc-section" id="pricing">
+    <p class="section-label en">Instant Estimate</p>
+    <p class="section-label es">Estimado Instantáneo</p>
+    <h2 class="section-title en">See your price <em>right now</em></h2>
+    <h2 class="section-title es">Ve tu precio <em>ahora mismo</em></h2>
+    <p class="section-body en">Select your service type and areas — your price updates instantly. No forms, no waiting.</p>
+    <p class="section-body es">Selecciona tu servicio y áreas — el precio se actualiza al instante.</p>
+
+    <div class="calc-wrap">
+      <div>
+        <!-- SERVICE TYPE -->
+        <div class="calc-block-label en">1. Choose service type</div>
+        <div class="calc-block-label es">1. Tipo de servicio</div>
+        <div class="calc-svc-grid">
+          <div class="calc-svc" onclick="setSvc(this,'initial_standard')">
+            <div class="calc-svc-name en">🧼 Initial Standard</div>
+            <div class="calc-svc-name es">🧼 Estándar Inicial</div>
+            <div class="calc-svc-price en">From $196</div>
+            <div class="calc-svc-price es">Desde $196</div>
+          </div>
+          <div class="calc-svc active" onclick="setSvc(this,'recurring_biweekly')">
+            <div class="calc-svc-name en">🔁 Bi-weekly ⭐</div>
+            <div class="calc-svc-name es">🔁 Quincenal ⭐</div>
+            <div class="calc-svc-price en">From $166</div>
+            <div class="calc-svc-price es">Desde $166</div>
+          </div>
+          <div class="calc-svc" onclick="setSvc(this,'recurring_weekly')">
+            <div class="calc-svc-name en">📅 Weekly</div>
+            <div class="calc-svc-name es">📅 Semanal</div>
+            <div class="calc-svc-price en">From $129</div>
+            <div class="calc-svc-price es">Desde $129</div>
+          </div>
+          <div class="calc-svc" onclick="setSvc(this,'recurring_monthly')">
+            <div class="calc-svc-name en">🗓️ Monthly</div>
+            <div class="calc-svc-name es">🗓️ Mensual</div>
+            <div class="calc-svc-price en">From $187</div>
+            <div class="calc-svc-price es">Desde $187</div>
+          </div>
+          <div class="calc-svc" onclick="setSvc(this,'initial_deep')">
+            <div class="calc-svc-name en">✨ Initial Deep Clean</div>
+            <div class="calc-svc-name es">✨ Profunda Inicial</div>
+            <div class="calc-svc-price en">From $332</div>
+            <div class="calc-svc-price es">Desde $332</div>
+          </div>
+          <div class="calc-svc" onclick="setSvc(this,'move_inout')">
+            <div class="calc-svc-name en">📦 Move In/Out</div>
+            <div class="calc-svc-name es">📦 Entrada/Salida</div>
+            <div class="calc-svc-price en">From $331</div>
+            <div class="calc-svc-price es">Desde $331</div>
+          </div>
+        </div>
+
+        <!-- AREAS -->
+        <div class="calc-block-label en">2. Select your areas</div>
+        <div class="calc-block-label es">2. Selecciona tus áreas</div>
+        <div class="calc-areas">
+          <div class="calc-area">
+            <div class="calc-area-left">
+              <div class="area-name en">🛁 Full Bathroom</div>
+              <div class="area-name es">🛁 Baño Completo</div>
+              <div class="area-price" id="cp-bath"></div>
+            </div>
+            <div class="calc-controls">
+              <button class="calc-btn" onclick="chg('bath',-1)">−</button>
+              <span class="calc-count" id="cv-bath">1</span>
+              <button class="calc-btn" onclick="chg('bath',1)">+</button>
+            </div>
+          </div>
+          <div class="calc-area">
+            <div class="calc-area-left">
+              <div class="area-name en">🚿 Half Bathroom</div>
+              <div class="area-name es">🚿 Medio Baño</div>
+              <div class="area-price" id="cp-halfbath"></div>
+            </div>
+            <div class="calc-controls">
+              <button class="calc-btn" onclick="chg('halfbath',-1)">−</button>
+              <span class="calc-count" id="cv-halfbath">0</span>
+              <button class="calc-btn" onclick="chg('halfbath',1)">+</button>
+            </div>
+          </div>
+          <div class="calc-area">
+            <div class="calc-area-left">
+              <div class="area-name en">🛏️ Bedroom</div>
+              <div class="area-name es">🛏️ Habitación</div>
+              <div class="area-price" id="cp-bedroom"></div>
+            </div>
+            <div class="calc-controls">
+              <button class="calc-btn" onclick="chg('bedroom',-1)">−</button>
+              <span class="calc-count" id="cv-bedroom">1</span>
+              <button class="calc-btn" onclick="chg('bedroom',1)">+</button>
+            </div>
+          </div>
+          <div class="calc-area">
+            <div class="calc-area-left">
+              <div class="area-name en">🍳 Kitchen</div>
+              <div class="area-name es">🍳 Cocina</div>
+              <div class="area-price" id="cp-kitchen"></div>
+            </div>
+            <div class="calc-controls">
+              <button class="calc-btn" onclick="chg('kitchen',-1)">−</button>
+              <span class="calc-count" id="cv-kitchen">1</span>
+              <button class="calc-btn" onclick="chg('kitchen',1)">+</button>
+            </div>
+          </div>
+          <div class="calc-area">
+            <div class="calc-area-left">
+              <div class="area-name en">🛋️ Living Area</div>
+              <div class="area-name es">🛋️ Sala</div>
+              <div class="area-price" id="cp-living"></div>
+            </div>
+            <div class="calc-controls">
+              <button class="calc-btn" onclick="chg('living',-1)">−</button>
+              <span class="calc-count" id="cv-living">1</span>
+              <button class="calc-btn" onclick="chg('living',1)">+</button>
+            </div>
+          </div>
+          <div class="calc-area">
+            <div class="calc-area-left">
+              <div class="area-name en">🍽️ Dining Room</div>
+              <div class="area-name es">🍽️ Comedor</div>
+              <div class="area-price" id="cp-dining"></div>
+            </div>
+            <div class="calc-controls">
+              <button class="calc-btn" onclick="chg('dining',-1)">−</button>
+              <span class="calc-count" id="cv-dining">0</span>
+              <button class="calc-btn" onclick="chg('dining',1)">+</button>
+            </div>
+          </div>
+          <div class="calc-area">
+            <div class="calc-area-left">
+              <div class="area-name en">🧺 Laundry Room</div>
+              <div class="area-name es">🧺 Cuarto de Lavado</div>
+              <div class="area-price" id="cp-laundry"></div>
+            </div>
+            <div class="calc-controls">
+              <button class="calc-btn" onclick="chg('laundry',-1)">−</button>
+              <span class="calc-count" id="cv-laundry">1</span>
+              <button class="calc-btn" onclick="chg('laundry',1)">+</button>
+            </div>
+          </div>
+          <div class="calc-area">
+            <div class="calc-area-left">
+              <div class="area-name en">💼 Office</div>
+              <div class="area-name es">💼 Oficina</div>
+              <div class="area-price" id="cp-office"></div>
+            </div>
+            <div class="calc-controls">
+              <button class="calc-btn" onclick="chg('office',-1)">−</button>
+              <span class="calc-count" id="cv-office">0</span>
+              <button class="calc-btn" onclick="chg('office',1)">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ADD-ONS -->
+        <div class="calc-block-label en">3. Add-ons (optional)</div>
+        <div class="calc-block-label es">3. Extras (opcional)</div>
+        <div class="calc-addon-grid">
+          <div class="calc-addon" onclick="togAddon(this,'oven1')"><div class="calc-addon-check">✓</div><div><div class="calc-svc-name en">Interior Oven</div><div class="calc-svc-name es">Interior Horno</div><div class="calc-svc-price" id="cap-oven1"></div></div></div>
+          <div class="calc-addon" onclick="togAddon(this,'fridge1')"><div class="calc-addon-check">✓</div><div><div class="calc-svc-name en">Interior Fridge</div><div class="calc-svc-name es">Interior Nevera</div><div class="calc-svc-price" id="cap-fridge1"></div></div></div>
+          <div class="calc-addon" onclick="togAddon(this,'baseboards')"><div class="calc-addon-check">✓</div><div><div class="calc-svc-name en">Baseboards</div><div class="calc-svc-name es">Rodapiés</div><div class="calc-svc-price" id="cap-baseboards"></div></div></div>
+          <div class="calc-addon" onclick="togAddon(this,'windows')"><div class="calc-addon-check">✓</div><div><div class="calc-svc-name en">Interior Windows</div><div class="calc-svc-name es">Ventanas</div><div class="calc-svc-price" id="cap-windows"></div></div></div>
+          <div class="calc-addon" onclick="togAddon(this,'linen1')"><div class="calc-addon-check">✓</div><div><div class="calc-svc-name en">Linen Change ×1</div><div class="calc-svc-name es">Sábanas ×1</div><div class="calc-svc-price" id="cap-linen1"></div></div></div>
+          <div class="calc-addon" onclick="togAddon(this,'walls')"><div class="calc-addon-check">✓</div><div><div class="calc-svc-name en">Spot Wall Cleaning</div><div class="calc-svc-name es">Limpieza de Paredes</div><div class="calc-svc-price" id="cap-walls"></div></div></div>
+        </div>
+
+        <!-- PETS -->
+        <div class="calc-block-label en">4. Pets at home</div>
+        <div class="calc-block-label es">4. Mascotas en casa</div>
+        <div class="calc-area" style="max-width:280px">
+          <div class="calc-area-left">
+            <div class="area-name en">Number of pets</div>
+            <div class="area-name es">Número de mascotas</div>
+            <div class="area-price en">1-2: +$15 · 3+: +$25 per visit</div>
+            <div class="area-price es">1-2: +$15 · 3+: +$25 por visita</div>
+          </div>
+          <div class="calc-controls">
+            <button class="calc-btn" onclick="chgPets(-1)">−</button>
+            <span class="calc-count" id="cv-pets">0</span>
+            <button class="calc-btn" onclick="chgPets(1)">+</button>
+          </div>
+        </div>
+
+        <!-- PACKAGES -->
+        <div class="calc-block-label en">5. Save with a prepaid package (optional)</div>
+        <div class="calc-block-label es">5. Ahorra con un paquete prepagado (opcional)</div>
+        <div class="calc-svc-grid">
+          <div class="calc-svc pkg-sel" onclick="selPkg(this,'starter')">
+            <div class="calc-svc-name en">Starter — 3 visits</div>
+            <div class="calc-svc-name es">Starter — 3 visitas</div>
+            <div class="calc-svc-price" style="color:#7ec8a4">Save 5%</div>
+          </div>
+          <div class="calc-svc pkg-sel" onclick="selPkg(this,'regular')">
+            <div class="calc-svc-name en">Regular — 6 visits</div>
+            <div class="calc-svc-name es">Regular — 6 visitas</div>
+            <div class="calc-svc-price" style="color:#7ec8a4">Save 10%</div>
+          </div>
+          <div class="calc-svc pkg-sel" onclick="selPkg(this,'premium')">
+            <div class="calc-svc-name en">Premium — 12 visits</div>
+            <div class="calc-svc-name es">Premium — 12 visitas</div>
+            <div class="calc-svc-price" style="color:#7ec8a4">Save 15%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESULT -->
+      <div class="calc-result">
+        <div class="calc-result-label en">Your estimate</div>
+        <div class="calc-result-label es">Tu estimado</div>
+        <div class="calc-total" id="calc-total">$166</div>
+        <div class="calc-svc-name-display" id="calc-svc-name">Recurring Bi-weekly</div>
+        <div id="calc-pkg-total" style="display:none;font-size:.75rem;color:#7ec8a4;margin-bottom:1rem;line-height:1.5;"></div>
+        <div class="calc-lines" id="calc-lines"></div>
+        <p class="calc-note en">Starting price based on your selections. Final quote confirmed after home review.</p>
+        <p class="calc-note es">Precio inicial según selecciones. Cotización final confirmada después de revisión.</p>
+        <button class="calc-book-btn" onclick="bookNow()">
+          <span class="en">Continue to Booking →</span>
+          <span class="es">Continuar con la Reserva →</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING FORM (Step 2 — right after calculator) -->
+<section class="contact-section contact-form-only" id="contact">
+  <div class="contact-right">
+    <h3 class="form-title en">Almost done!</h3>
+    <h3 class="form-title es">¡Ya casi!</h3>
+    <form id="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label en">First Name</label>
+          <label class="form-label es">Nombre</label>
+          <input type="text" class="form-input" id="cf-name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label en">Last Name</label>
+          <label class="form-label es">Apellido</label>
+          <input type="text" class="form-input" id="cf-lastname" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label en">Phone Number</label>
+        <label class="form-label es">Teléfono</label>
+        <input type="tel" class="form-input" id="cf-phone" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label en">Email Address</label>
+        <label class="form-label es">Correo Electrónico</label>
+        <input type="email" class="form-input" id="cf-email" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label en">Service Area</label>
+        <label class="form-label es">Área de Servicio</label>
+        <select class="form-select" id="cf-area" required>
+          <option value="" disabled selected></option>
+          <option>Wesley Chapel</option>
+          <option>Land O' Lakes</option>
+          <option>Zephyrhills</option>
+          <option>Tampa</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label en">Tell us about your home</label>
+        <label class="form-label es">Cuéntanos sobre tu hogar</label>
+        <textarea class="form-textarea" id="cf-notes" placeholder="Bedrooms, bathrooms, pets, special requests..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">
+        <span class="en">Send Request →</span>
+        <span class="es">Enviar Solicitud →</span>
+      </button>
+      <p class="form-note en">We'll respond within a few hours with a secure Square payment link. Your appointment is confirmed once payment is received.</p>
+      <p class="form-note es">Te responderemos en pocas horas con un enlace de pago seguro vía Square. Tu cita se confirma al recibir el pago.</p>
+    </form>
+  </div>
+</section>
+
+  <!-- GALLERY -->
+  <section class="section" id="gallery">
+    <p class="section-label en">Our Work</p>
+    <p class="section-label es">Nuestro Trabajo</p>
+    <h2 class="section-title en">Every detail, <em>thoughtfully done</em></h2>
+    <h2 class="section-title es">Cada detalle, <em>hecho con cuidado</em></h2>
+    <div class="gallery-grid">
+      
+        <div class="gal-item" data-index="0" data-shop="true">
+          <div class="gal-img-wrap">
+            <img src="img2.jpg" alt="Bathroom detail with Lunara candle" loading="lazy">
+            <div class="gal-overlay">
+              <span class="en">Bathroom detail with Lunara candle</span>
+              <span class="es">Baño con detalle Lunara</span>
+            </div>
+          </div>
+        </div>
+        
+        </div>
+        <div class="gal-item" data-index="2">
+          <div class="gal-img-wrap">
+            <img src="img4.jpg" alt="Spotless living space" loading="lazy">
+            <div class="gal-overlay">
+              <span class="en">Spotless living space</span>
+              <span class="es">Sala impecable</span>
+            </div>
+          </div>
+        </div>
+        <div class="gal-item" data-index="3">
+          <div class="gal-img-wrap">
+            <img src="img5.jpg" alt="Move-in ready — fresh and clean" loading="lazy">
+            <div class="gal-overlay">
+              <span class="en">Move-in ready — fresh and clean</span>
+              <span class="es">Lista para mudarte — fresca y limpia</span>
+            </div>
+          </div>
+        </div>
+        <div class="gal-item" data-index="4" data-shop="true">
+          <div class="gal-img-wrap">
+            <img src="img6.jpg" alt="The Lunara Kit — premium tools" loading="lazy">
+            <div class="gal-overlay">
+              <span class="en">The Lunara Kit — premium tools</span>
+              <span class="es">El Kit Lunara — herramientas premium</span>
+            </div>
+          </div>
+        </div>
+        
+        </div>
+        
+        </div>
+    </div>
+    <div class="gal-coming-soon">
+      <p class="section-label en" style="margin-bottom:.5rem">Coming Soon</p>
+      <p class="section-label es" style="margin-bottom:.5rem">Próximamente</p>
+      <p style="font-size:.9rem;color:var(--muted)" class="en">The Lunara Edit — premium candles & cleaning kits for your home.</p>
+      <p style="font-size:.9rem;color:var(--muted)" class="es">The Lunara Edit — velas premium y kits de limpieza para tu hogar.</p>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section class="section section-alt" id="video">
+    <p class="section-label en">See Us in Action</p>
+    <p class="section-label es">Míranos Trabajar</p>
+    <h2 class="section-title en">Cleaning, <em>up close</em></h2>
+    <h2 class="section-title es">Limpieza, <em>de cerca</em></h2>
+    <div style="display:flex;justify-content:center;margin-top:2rem">
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@lunarahomecleaning/video/7646482156704877854" data-video-id="7646482156704877854" style="max-width: 605px;min-width: 325px;" >
+        <section>
+          <a target="_blank" title="@lunarahomecleaning" href="https://www.tiktok.com/@lunarahomecleaning?refer=embed">@lunarahomecleaning</a>
+          Modo limpieza activado 🧹✨ / Cleaning mode: ON
+          <a title="cleanwithme" target="_blank" href="https://www.tiktok.com/tag/cleanwithme?refer=embed">#cleanwithme</a>
+          <a title="cleaning" target="_blank" href="https://www.tiktok.com/tag/cleaning?refer=embed">#cleaning</a>
+          <a title="limpieza" target="_blank" href="https://www.tiktok.com/tag/limpieza?refer=embed">#limpieza</a>
+          <a title="satisfyin" target="_blank" href="https://www.tiktok.com/tag/satisfyin?refer=embed">#satisfyin</a>
+          <a target="_blank" title="♬ RALLY FUNKED - VYNXCIUZ" href="https://www.tiktok.com/music/RALLY-FUNKED-7528024783184906241?refer=embed">♬ RALLY FUNKED - VYNXCIUZ</a>
+        </section>
+      </blockquote>
+      <script async src="https://www.tiktok.com/embed.js"></script>
+    </div>
+  </section>
+
+  
+  <!-- FAQ -->
+  <section class="section section-alt" id="faq">
+    <p class="section-label en">FAQ</p>
+    <p class="section-label es">Preguntas Frecuentes</p>
+    <h2 class="section-title en">Everything you need to <em>know</em></h2>
+    <h2 class="section-title es">Todo lo que necesitas <em>saber</em></h2>
+
+    <div style="max-width:720px;margin-top:2.5rem">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="togFaq(this)">
+          <span class="en-inline">Do you bring your own products and equipment?</span><span class="es-inline">¿Traen sus propios productos y equipo?</span><span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a en">Yes — we bring everything needed to clean your home professionally. If you prefer we use your own products, let us know in advance and we'll accommodate as long as they're effective cleaning supplies.</div>
+        <div class="faq-a es">Sí — traemos todo lo necesario para limpiar tu hogar de forma profesional. Si prefieres que usemos tus propios productos, avísanos con anticipación y los usaremos siempre que sean efectivos.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="togFaq(this)">
+          <span class="en-inline">How long does a cleaning take?</span><span class="es-inline">¿Cuánto dura una limpieza?</span><span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a en">A standard maintenance cleaning typically takes 2.5 to 3.5 hours depending on the size and condition of your home. If your home requires more attention, it may take 4+ hours. We'll always let you know in advance.</div>
+        <div class="faq-a es">Una limpieza estándar de mantenimiento suele tomar entre 2.5 y 3.5 horas, dependiendo del tamaño y estado de tu hogar. Si tu hogar requiere más atención, puede tomar 4+ horas. Siempre te avisaremos con anticipación.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="togFaq(this)">
+          <span class="en-inline">Who will be cleaning my home?</span><span class="es-inline">¿Quién limpiará mi hogar?</span><span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a en">In most cases, it will be me — Carolina, the owner of Lunara Home Cleaning. I take pride in delivering consistent, high-quality service. If a trusted team member assists, you will always be notified in advance.</div>
+        <div class="faq-a es">En la mayoría de los casos, seré yo — Carolina, la propietaria de Lunara Home Cleaning. Me enorgullece brindar un servicio consistente y de alta calidad. Si un miembro de confianza del equipo me ayuda, siempre te avisaremos con anticipación.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="togFaq(this)">
+          <span class="en-inline">Are you insured?</span><span class="es-inline">¿Están asegurados?</span><span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a en">Yes, Lunara Home Cleaning carries general liability insurance. Your home and belongings are in good hands. If anything is accidentally damaged during a visit, we will notify you immediately and work together on a solution.</div>
+        <div class="faq-a es">Sí, Lunara Home Cleaning cuenta con seguro de responsabilidad civil general. Tu hogar y pertenencias están en buenas manos. Si algo se daña accidentalmente durante una visita, te notificaremos de inmediato y buscaremos una solución juntos.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="togFaq(this)">
+          <span class="en-inline">Can I be home during the cleaning?</span><span class="es-inline">¿Puedo estar en casa durante la limpieza?</span><span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a en">Absolutely. We just ask that you give us space to work efficiently — please avoid the areas being cleaned until we're done. This helps us deliver our best results for you.</div>
+        <div class="faq-a es">Por supuesto. Solo te pedimos que nos den espacio para trabajar de manera eficiente — evita las áreas que estamos limpiando hasta que terminemos. Esto nos ayuda a darte los mejores resultados.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="togFaq(this)">
+          <span class="en-inline">Do you work with homes that have pets?</span><span class="es-inline">¿Trabajan en hogares con mascotas?</span><span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a en">Yes! We love pets. There is an additional fee for homes with pets — $15 for 1-2 pets, $25 for 3 or more — to account for the extra care required. Pets must be safely contained during the visit. Homes where smoking occurs indoors also have an additional fee.</div>
+        <div class="faq-a es">¡Sí! Amamos a las mascotas. Hay un cargo adicional para hogares con mascotas — $15 por 1-2 mascotas, $25 por 3 o más — para cubrir el cuidado extra requerido. Las mascotas deben estar resguardadas de forma segura durante la visita. Los hogares donde se fuma en interiores también tienen un cargo adicional.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="togFaq(this)">
+          <span class="en-inline">How does payment work?</span><span class="es-inline">¿Cómo funciona el pago?</span><span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a en">Payment is required upfront to confirm your booking. We accept credit and debit cards via Square. A small processing fee of 2.6% + $0.10 applies to card payments. To avoid this fee, ask about paying via Zelle — it's free of charge.</div>
+        <div class="faq-a es">Se requiere el pago por adelantado para confirmar tu reserva. Aceptamos tarjetas de crédito y débito vía Square. Se aplica un pequeño cargo de procesamiento de 2.6% + $0.10 a los pagos con tarjeta. Para evitar este cargo, pregunta sobre pagar vía Zelle — no tiene costo.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="togFaq(this)">
+          <span class="en-inline">What if I need to cancel or reschedule?</span><span class="es-inline">¿Qué pasa si necesito cancelar o reprogramar?</span><span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a en">We require at least 48 hours notice to reschedule or cancel. We understand emergencies happen — please contact us as soon as possible. Same-day cancellations may result in a $50 fee. Your appointment time is reserved exclusively for you, so advance notice helps us serve everyone fairly.</div>
+        <div class="faq-a es">Requerimos al menos 48 horas de aviso para reprogramar o cancelar. Entendemos que pueden surgir emergencias — por favor contáctanos lo antes posible. Las cancelaciones el mismo día pueden generar un cargo de $50. Tu horario de cita está reservado exclusivamente para ti, así que el aviso anticipado nos ayuda a atender a todos de forma justa.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="togFaq(this)">
+          <span class="en-inline">How do I book?</span><span class="es-inline">¿Cómo reservo?</span><span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a en">You can book directly through our website using the price calculator above. Use the calculator to get your exact price, fill out the quick form, and we'll send you a secure Square payment link within a few hours — paying confirms your appointment.</div>
+        <div class="faq-a es">Puedes reservar directamente desde nuestro sitio usando la calculadora de precios. Usa la calculadora para obtener tu precio exacto, llena el formulario rápido, y te enviaremos un enlace de pago seguro vía Square en pocas horas — pagar confirma tu cita.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="togFaq(this)">
+          <span class="en-inline">Can I request add-on services the same day?</span><span class="es-inline">¿Puedo solicitar servicios adicionales el mismo día?</span><span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a en">Add-ons must be requested in advance when booking. Same-day requests cannot be guaranteed — we schedule our time carefully to ensure every client receives our full attention, and last-minute additions could cause us to run late for other appointments.</div>
+        <div class="faq-a es">Los servicios adicionales deben solicitarse con anticipación al reservar. No podemos garantizar solicitudes el mismo día — programamos nuestro tiempo cuidadosamente para que cada cliente reciba toda nuestra atención, y agregar cosas de último momento podría retrasarnos con otras citas.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="togFaq(this)">
+          <span class="en-inline">Why do I need an initial cleaning first?</span><span class="es-inline">¿Por qué necesito una limpieza inicial primero?</span><span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a en">Every home is different, and every cleaning company has different standards. The initial cleaning allows us to bring your home up to the Lunara standard — so that future recurring visits are faster, more efficient, and consistently excellent. We don't skip this step, even if you've had professional cleaners before.</div>
+        <div class="faq-a es">Cada hogar es diferente, y cada empresa de limpieza tiene distintos estándares. La limpieza inicial nos permite llevar tu hogar al estándar de Lunara — para que las futuras visitas recurrentes sean más rápidas, eficientes y consistentemente excelentes. No omitimos este paso, incluso si has tenido limpiadores profesionales antes.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GET IN TOUCH (info block) -->
+  <section class="info-section" id="get-in-touch">
+    <p class="section-label en">Get In Touch</p>
+    <p class="section-label es">Contáctanos</p>
+    <h2 class="section-title en">Your home is waiting.<br><em>Let's make it shine.</em></h2>
+    <h2 class="section-title es">¿Lista para un hogar<br><em>impecable</em>?</h2>
+    <p class="section-body en">We serve Wesley Chapel, Land O' Lakes, Zephyrhills, and Tampa. Reach out and we'll confirm your booking within a few hours.</p>
+    <p class="section-body es">Servimos Wesley Chapel, Land O' Lakes, Zephyrhills y Tampa. Contáctanos y te confirmamos tu cita en pocas horas.</p>
+    <div class="info-details">
+      <div class="info-detail">
+        <span class="contact-detail-label en">Areas</span>
+        <span class="contact-detail-label es">Áreas</span>
+        <span class="contact-detail-val">Wesley Chapel · Land O' Lakes<br>Zephyrhills · Tampa, FL</span>
+      </div>
+      <div class="info-detail">
+        <span class="contact-detail-label en">Payment</span>
+        <span class="contact-detail-label es">Pago</span>
+        <span class="contact-detail-val en">Secure prepaid via Square</span>
+        <span class="contact-detail-val es">Prepago seguro vía Square</span>
+      </div>
+      <div class="info-detail">
+        <span class="contact-detail-label en">Response</span>
+        <span class="contact-detail-label es">Respuesta</span>
+        <span class="contact-detail-val en">Within a few hours</span>
+        <span class="contact-detail-val es">En pocas horas</span>
+      </div>
+    </div>
+  </section>
+
+
+<footer>
+  <div class="footer-logo">Lunara <span>·</span> Home Cleaning</div>
+  <div class="footer-copy">© 2025 Lunara Home Cleaning · Wesley Chapel, FL</div>
+  <div class="footer-areas">Wesley Chapel · Land O' Lakes<br>Zephyrhills · Tampa</div>
+</footer>
+
+<script>
+function setLang(lang) {
+  document.body.className = lang === 'es' ? 'lang-es' : '';
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  if (typeof calcTotal === 'function') calcTotal();
+}
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit');
+  const isEs = document.body.classList.contains('lang-es');
+
+  // ---- Require the calculator to have been used first ----
+  if (typeof calcTouched === 'undefined' || !calcTouched) {
+    var pricing = document.getElementById('pricing');
+    if (pricing) pricing.scrollIntoView({behavior:'smooth'});
+    btn.textContent = isEs ? 'Usa la calculadora arriba primero ↑' : 'Please use the calculator above first ↑';
+    btn.style.background = '#c97b5e';
+    setTimeout(() => {
+      btn.innerHTML = '<span class="en">Send Request →</span><span class="es">Enviar Solicitud →</span>';
+      btn.style.background = '';
+    }, 3500);
+    return;
+  }
+
+  // ---- Pull data from the calculator (defined later in the page) ----
+  var s = cState.svc;
+  var areaList = Object.keys(cState.areas).filter(function(k){return cState.areas[k]>0;})
+    .map(function(k){return cState.areas[k]+'x '+areaName(k);}).join(', ');
+  var addonList = Object.keys(cState.addons).map(function(k){return addonName(k);}).join(', ');
+  var total = document.getElementById('calc-total').textContent;
+  var pkgInfo = cState.pkg ? '\nPackage: '+PACKAGES.find(function(p){return p.key===cState.pkg;}).label+' ('+PACKAGES.find(function(p){return p.key===cState.pkg;}).visits+' visits prepaid)' : '';
+  var petInfo = cState.pets>0 ? '\nPets: '+cState.pets : '';
+
+  var quoteBlock = 'Service: '+svcName(s)+pkgInfo
+    + '\nAreas: '+(areaList||'—')
+    + (addonList ? '\nAdd-ons: '+addonList : '')
+    + petInfo
+    + '\nEstimated Total per Visit: '+total;
+
+  // ---- Pull data from the form ----
+  var firstName = document.getElementById('cf-name').value;
+  var lastName  = document.getElementById('cf-lastname').value;
+  var phone     = document.getElementById('cf-phone').value;
+  var email     = document.getElementById('cf-email').value;
+  var area      = document.getElementById('cf-area').value;
+  var notes     = document.getElementById('cf-notes').value;
+
+  var subject = encodeURIComponent('Booking Request — Lunara Home Cleaning');
+  var body = encodeURIComponent(
+    quoteBlock
+    + '\n\nName: ' + firstName + ' ' + lastName
+    + '\nPhone: ' + phone
+    + '\nEmail: ' + email
+    + '\nService Area: ' + area
+    + '\nNotes: ' + (notes || '—')
+  );
+
+  window.location.href = 'mailto:hello@lunarahomecare.org?subject='+subject+'&body='+body;
+
+  btn.textContent = isEs ? '¡Abriendo tu correo!' : 'Opening your email!';
+  btn.style.background = '#B8A06A';
+  setTimeout(() => {
+    btn.innerHTML = '<span class="en">Send Request →</span><span class="es">Enviar Solicitud →</span>';
+    btn.style.background = '';
+    e.target.reset();
+  }, 4000);
+}
+</script>
+<script>
+// ============ PRICING DATA ============
+var CPRICES={
+  bath:     {initial_standard:52.50, initial_deep:75.60, recurring_weekly:29.53, recurring_biweekly:37.93, recurring_monthly:42.53},
+  halfbath: {initial_standard:28.00, initial_deep:40.32, recurring_weekly:15.75, recurring_biweekly:20.23, recurring_monthly:22.68},
+  bedroom:  {initial_standard:35.00, initial_deep:50.40, recurring_weekly:19.69, recurring_biweekly:25.29, recurring_monthly:28.35},
+  office:   {initial_standard:35.00, initial_deep:50.40, recurring_weekly:19.69, recurring_biweekly:25.29, recurring_monthly:28.35},
+  pantry:   {initial_standard:35.00, initial_deep:50.40, recurring_weekly:19.69, recurring_biweekly:25.29, recurring_monthly:28.35},
+  laundry:  {initial_standard:21.00, initial_deep:30.24, recurring_weekly:11.81, recurring_biweekly:15.17, recurring_monthly:17.01},
+  kitchen:  {initial_standard:52.50, initial_deep:75.60, recurring_weekly:29.53, recurring_biweekly:37.93, recurring_monthly:42.53},
+  living:   {initial_standard:35.00, initial_deep:50.40, recurring_weekly:19.69, recurring_biweekly:25.29, recurring_monthly:28.35},
+  dining:   {initial_standard:35.00, initial_deep:50.40, recurring_weekly:19.69, recurring_biweekly:25.29, recurring_monthly:28.35},
+  basement: {initial_standard:70.00, initial_deep:100.80,recurring_weekly:39.38, recurring_biweekly:50.58, recurring_monthly:56.70},
+  patio:    {initial_standard:35.00, initial_deep:50.40, recurring_weekly:19.69, recurring_biweekly:25.29, recurring_monthly:28.35}
+};
+
+var CADDONS={
+  oven1:       {initial_standard:70,   initial_deep:100.80, recurring_weekly:39.38, recurring_biweekly:50.58, recurring_monthly:56.70},
+  oven2:       {initial_standard:140,  initial_deep:201.60, recurring_weekly:78.75, recurring_biweekly:101.15,recurring_monthly:113.40},
+  fridge1:     {initial_standard:70,   initial_deep:100.80, recurring_weekly:39.38, recurring_biweekly:50.58, recurring_monthly:56.70},
+  fridge2:     {initial_standard:140,  initial_deep:201.60, recurring_weekly:78.75, recurring_biweekly:101.15,recurring_monthly:113.40},
+  fixtures:    {initial_standard:35,   initial_deep:50.40,  recurring_weekly:19.69, recurring_biweekly:25.29, recurring_monthly:28.35},
+  ext_cabinet: {initial_standard:35,   initial_deep:50.40,  recurring_weekly:19.69, recurring_biweekly:25.29, recurring_monthly:28.35},
+  int_cabinet: {initial_standard:70,   initial_deep:100.80, recurring_weekly:39.38, recurring_biweekly:50.58, recurring_monthly:56.70},
+  full_cabinet:{initial_standard:105,  initial_deep:151.20, recurring_weekly:59.06, recurring_biweekly:75.86, recurring_monthly:85.05},
+  walls:       {initial_standard:35,   initial_deep:50.40,  recurring_weekly:19.69, recurring_biweekly:25.29, recurring_monthly:28.35},
+  baseboards:  {initial_standard:70,   initial_deep:100.80, recurring_weekly:39.38, recurring_biweekly:50.58, recurring_monthly:56.70},
+  trash:       {initial_standard:21,   initial_deep:30.24,  recurring_weekly:11.81, recurring_biweekly:15.17, recurring_monthly:17.01},
+  linen1:      {initial_standard:14,   initial_deep:20.16,  recurring_weekly:7.88,  recurring_biweekly:10.12, recurring_monthly:11.34},
+  linen2:      {initial_standard:28,   initial_deep:40.32,  recurring_weekly:15.75, recurring_biweekly:20.23, recurring_monthly:22.68},
+  linen3:      {initial_standard:42,   initial_deep:60.48,  recurring_weekly:23.63, recurring_biweekly:30.35, recurring_monthly:34.02},
+  dog_walk:    {initial_standard:35,   initial_deep:50.40,  recurring_weekly:19.69, recurring_biweekly:25.29, recurring_monthly:28.35}
+};
+
+var PETS={small:15, large:25}; // 1-2 pets = 15, 3+ = 25
+
+var PACKAGES=[
+  {key:'starter', visits:3,  discount:0.05, label:'Starter',  desc:'3 prepaid visits'},
+  {key:'regular', visits:6,  discount:0.10, label:'Regular',  desc:'6 prepaid visits'},
+  {key:'premium', visits:12, discount:0.15, label:'Premium',  desc:'12 prepaid visits'}
+];
+
+var CSVC_NAMES={initial_standard:'🧼 Initial Standard',initial_deep:'✨ Initial Deep Clean',recurring_weekly:'📅 Recurring Weekly',recurring_biweekly:'🔁 Recurring Bi-weekly',recurring_monthly:'🗓️ Recurring Monthly',move_inout:'📦 Move In/Out'};
+var CAREA_NAMES={bath:'🛁 Full Bathroom',halfbath:'🚿 Half Bathroom',bedroom:'🛏️ Bedroom',office:'💼 Office',pantry:'🥫 Pantry',laundry:'🧺 Laundry Room',kitchen:'🍳 Kitchen',living:'🛋️ Living Area',dining:'🍽️ Dining Room',basement:'🔻 Basement',patio:'🌿 Patio'};
+var CADDON_NAMES={oven1:'Interior Oven (1)',oven2:'Interior Oven (2)',fridge1:'Interior Fridge (1)',fridge2:'Interior Fridge (2)',fixtures:'High Light Fixtures',ext_cabinet:'Exterior Cabinets',int_cabinet:'Interior Cabinets (empty)',full_cabinet:'Full Cabinets (Int+Ext)',walls:'Spot Wall Cleaning',baseboards:'Baseboards',trash:'Trash Disposal',linen1:'Linen Change (1 bed)',linen2:'Linen Change (2 beds)',linen3:'Linen Change (3 beds)',dog_walk:'Dog Walking'};
+
+var CSVC_NAMES_ES={initial_standard:'🧼 Estándar Inicial',initial_deep:'✨ Profunda Inicial',recurring_weekly:'📅 Semanal Recurrente',recurring_biweekly:'🔁 Quincenal Recurrente',recurring_monthly:'🗓️ Mensual Recurrente',move_inout:'📦 Entrada/Salida'};
+var CAREA_NAMES_ES={bath:'🛁 Baño Completo',halfbath:'🚿 Medio Baño',bedroom:'🛏️ Habitación',office:'💼 Oficina',pantry:'🥫 Despensa',laundry:'🧺 Cuarto de Lavado',kitchen:'🍳 Cocina',living:'🛋️ Sala',dining:'🍽️ Comedor',basement:'🔻 Sótano',patio:'🌿 Patio'};
+var CADDON_NAMES_ES={oven1:'Interior de Horno (1)',oven2:'Interior de Horno (2)',fridge1:'Interior de Nevera (1)',fridge2:'Interior de Nevera (2)',fixtures:'Luminarias Altas',ext_cabinet:'Gabinetes Exteriores',int_cabinet:'Gabinetes Interiores (vacíos)',full_cabinet:'Gabinetes Completos (Int+Ext)',walls:'Limpieza de Manchas en Paredes',baseboards:'Rodapiés',trash:'Disposición de Basura',linen1:'Cambio de Sábanas (1 cama)',linen2:'Cambio de Sábanas (2 camas)',linen3:'Cambio de Sábanas (3 camas)',dog_walk:'Paseo de Perro'};
+
+function isEsLang(){ return document.body.classList.contains('lang-es'); }
+function svcName(key){ return isEsLang() ? CSVC_NAMES_ES[key] : CSVC_NAMES[key]; }
+function areaName(key){ return isEsLang() ? CAREA_NAMES_ES[key] : CAREA_NAMES[key]; }
+function addonName(key){ return isEsLang() ? CADDON_NAMES_ES[key] : CADDON_NAMES[key]; }
+
+var cState={
+  svc:'recurring_biweekly',
+  areas:{bath:1,halfbath:0,bedroom:1,office:0,pantry:0,laundry:1,kitchen:1,living:1,dining:0,basement:0,patio:0},
+  addons:{},
+  pets:0,
+  pkg:null
+};
+var calcTouched=false;
+
+function fmtC(n){return '$'+Math.round(n);}
+
+function setSvc(el,key){
+  document.querySelectorAll('.calc-svc').forEach(function(e){e.classList.remove('active');});
+  el.classList.add('active');
+  cState.svc=key;
+  calcTouched=true;
+  updateCTags();
+  calcTotal();
+}
+
+function chg(key,delta){
+  cState.areas[key]=Math.max(0,Math.min(8,cState.areas[key]+delta));
+  document.getElementById('cv-'+key).textContent=cState.areas[key];
+  calcTouched=true;
+  calcTotal();
+}
+
+function togAddon(el,key){
+  el.classList.toggle('active');
+  if(el.classList.contains('active')){cState.addons[key]=true;}else{delete cState.addons[key];}
+  calcTouched=true;
+  calcTotal();
+}
+
+function chgPets(delta){
+  cState.pets=Math.max(0,Math.min(6,cState.pets+delta));
+  document.getElementById('cv-pets').textContent=cState.pets;
+  calcTouched=true;
+  calcTotal();
+}
+
+function selPkg(el,key){
+  document.querySelectorAll('.pkg-sel').forEach(function(e){e.classList.remove('active');});
+  if(cState.pkg===key){cState.pkg=null;}
+  else{el.classList.add('active');cState.pkg=key;}
+  calcTouched=true;
+  calcTotal();
+}
+
+function updateCTags(){
+  var s=cState.svc;
+  Object.keys(CPRICES).forEach(function(k){
+    var el=document.getElementById('cp-'+k);
+    if(el)el.textContent=CPRICES[k]&&CPRICES[k][s]>0?fmtC(CPRICES[k][s])+'/area':'';
+  });
+  Object.keys(CADDONS).forEach(function(k){
+    var el=document.getElementById('cap-'+k);
+    if(el)el.textContent=CADDONS[k][s]?'+'+fmtC(CADDONS[k][s]):'';
+  });
+}
+
+function calcTotal(){
+  var s=cState.svc;
+  var baseTotal=0; var lines=[];
+
+  // Areas
+  Object.keys(cState.areas).forEach(function(k){
+    var qty=cState.areas[k];
+    if(qty>0&&CPRICES[k]&&CPRICES[k][s]>0){
+      var cost=qty*CPRICES[k][s];
+      baseTotal+=cost;
+      lines.push({n:(qty>1?qty+'× ':'')+areaName(k),v:fmtC(cost)});
+    }
+  });
+
+  // Addons
+  Object.keys(cState.addons).forEach(function(k){
+    if(CADDONS[k]&&CADDONS[k][s]){
+      var cost=CADDONS[k][s];
+      baseTotal+=cost;
+      lines.push({n:addonName(k),v:'+'+fmtC(cost)});
+    }
+  });
+
+  // Pets
+  if(cState.pets>0){
+    var petFee=cState.pets<=2?PETS.small:PETS.large;
+    baseTotal+=petFee;
+    var petLabel = isEsLang()
+      ? (cState.pets+(cState.pets>1?' mascotas':' mascota'))
+      : (cState.pets+' pet'+(cState.pets>1?'s':''));
+    lines.push({n:petLabel,v:'+'+fmtC(petFee)});
+  }
+
+  if(baseTotal===0) baseTotal=Math.round((CPRICES.bath[s]||0)+(CPRICES.bedroom[s]||0)+(CPRICES.kitchen[s]||0)+(CPRICES.living[s]||0)+(CPRICES.laundry[s]||0));
+
+  // Package discount
+  var finalTotal=baseTotal;
+  var discount=0;
+  var pkgVisits=1;
+  if(cState.pkg){
+    var pkg=PACKAGES.find(function(p){return p.key===cState.pkg;});
+    if(pkg){
+      discount=pkg.discount;
+      pkgVisits=pkg.visits;
+      var savings=Math.round(baseTotal*discount);
+      finalTotal=Math.round(baseTotal*(1-discount));
+      var discountLabel = isEsLang()
+        ? 'Descuento de paquete ('+Math.round(discount*100)+'%)'
+        : 'Package discount ('+Math.round(discount*100)+'%)';
+      lines.push({n:discountLabel,v:'−'+fmtC(savings),green:true});
+    }
+  }
+
+  // Update display
+  document.getElementById('calc-total').textContent=fmtC(finalTotal);
+  var pkgSuffix = '';
+  if(cState.pkg && pkgVisits>1){
+    pkgSuffix = isEsLang() ? (' · '+pkgVisits+' visitas prepagadas') : (' · '+pkgVisits+' visits prepaid');
+  }
+  document.getElementById('calc-svc-name').textContent=svcName(s)+pkgSuffix;
+
+  if(cState.pkg&&pkgVisits>1){
+    var pkgTotal=finalTotal*pkgVisits;
+    var pkgTotalText = isEsLang()
+      ? ('Total del paquete: '+fmtC(pkgTotal)+' por '+pkgVisits+' visitas')
+      : ('Package total: '+fmtC(pkgTotal)+' for '+pkgVisits+' visits');
+    document.getElementById('calc-pkg-total').textContent=pkgTotalText;
+    document.getElementById('calc-pkg-total').style.display='block';
+  } else {
+    document.getElementById('calc-pkg-total').style.display='none';
+  }
+
+  var linesEl=document.getElementById('calc-lines');
+  linesEl.innerHTML=lines.map(function(l){
+    return '<div class="calc-line"><span>'+l.n+'</span><span class="calc-line-val"'+(l.green?' style="color:#7ec8a4"':'')+'>'+l.v+'</span></div>';
+  }).join('');
+}
+
+function bookNow(){
+  var contact=document.getElementById('contact');
+  if(contact) contact.scrollIntoView({behavior:'smooth'});
+}
+
+updateCTags();
+calcTotal();
+</script>
+<script>
+function togFaq(btn) {
+  var item = btn.parentElement;
+  var answers = item.querySelectorAll('.faq-a');
+  var isOpen = answers.length && answers[0].classList.contains('open');
+  document.querySelectorAll('.faq-a').forEach(function(el){ el.classList.remove('open'); });
+  document.querySelectorAll('.faq-q').forEach(function(el){ el.classList.remove('open'); });
+  if (!isOpen) {
+    answers.forEach(function(el){ el.classList.add('open'); });
+    btn.classList.add('open');
+  }
+}
+
+function openTextUs(){
+  var isEs = document.body.classList.contains('lang-es');
+  var msg = isEs
+    ? 'Hola! Tengo una pregunta sobre limpieza.'
+    : 'Hi! I have a question about cleaning.';
+  window.location.href = 'sms:+18135532737?body=' + encodeURIComponent(msg);
+}
+</script>
+
+<a href="#" class="text-us-btn" onclick="openTextUs();return false;">
+  <span class="icon">💬</span>
+  <span class="en-inline">Text Us</span>
+  <span class="es-inline">Envíanos un Mensaje</span>
+</a>
+
+</body>
+</html>
